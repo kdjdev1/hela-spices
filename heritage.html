@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage Hub - Meet Our Farmers & Sustainability</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            heilla: {
+              yellow: '#F4C430',
+              red: '#B22222',
+              black: '#1A1A1A',
+              terracotta: '#A0522D',
+            }
+          },
+          animation: {
+            float: 'float 3s ease-in-out infinite',
+            shimmer: 'shimmer 2s infinite',
+            slideIn: 'slideIn 0.5s ease-out',
+            fadeInUp: 'fadeInUp 0.6s ease-out',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-1000px 0' },
+              '100%': { backgroundPosition: '1000px 0' },
+            },
+            slideIn: {
+              '0%': { transform: 'translateX(-100%)', opacity: '0' },
+              '100%': { transform: 'translateX(0)', opacity: '1' },
+            },
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .dark-mode .glass-effect {
+      background: rgba(26, 26, 26, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hover-scale {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-scale:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(242, 196, 48, 0.3);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #F4C430 0%, #B22222 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-heilla {
+      background: linear-gradient(135deg, #F4C430 0%, #B22222 100%);
+    }
+
+    .gradient-dark {
+      background: linear-gradient(135deg, #1A1A1A 0%, #2d2d2d 100%);
+    }
+
+    .farmer-btn.active {
+      background-color: #F4C430 !important;
+      color: #1A1A1A !important;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="bg-white dark:bg-heilla-black dark:text-white transition-colors duration-300">
+
+  <!-- Dark Mode Toggle -->
+  <button id="darkModeToggle" class="fixed top-6 right-6 z-50 w-14 h-14 bg-heilla-yellow dark:bg-heilla-red rounded-full flex items-center justify-center text-2xl hover:scale-110 transition-transform duration-300 shadow-2xl">
+    <span id="toggleIcon">🌙</span>
+  </button>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-40 glass-effect dark:glass-effect border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-3xl font-black text-gradient">🌶️ Heilla</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="font-semibold hover:text-heilla-yellow transition">Home</a>
+        <a href="marketplace.html" class="font-semibold hover:text-heilla-yellow transition">Shop</a>
+        <a href="heritage.html" class="font-semibold hover:text-heilla-yellow transition">Heritage</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="gradient-heilla pt-32 pb-20 px-6 text-heilla-black">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-5xl lg:text-6xl font-black mb-4">Heritage & Transparency</h1>
+      <p class="text-xl opacity-95 max-w-2xl">
+        Meet the farmers, understand our sustainability mission, and taste the difference that 50 years of heritage makes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Farmers Section -->
+  <section class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-5xl font-black mb-16">Meet Our Farmers</h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Farmer Selection Cards -->
+        <div class="space-y-4">
+          <div id="farmerButtons">
+            <button onclick="selectFarmer(1)" class="farmer-btn w-full p-6 rounded-2xl bg-heilla-yellow text-heilla-black text-left font-bold hover:scale-105 transition-transform shadow-lg active">
+              <div class="text-3xl mb-2">👨‍🌾</div>
+              <h4>Mr. Ransaka Perera</h4>
+              <p class="text-sm opacity-80">Turmeric Master • 35 Years</p>
+            </button>
+
+            <button onclick="selectFarmer(2)" class="farmer-btn w-full p-6 rounded-2xl bg-white dark:bg-gray-800 text-heilla-black dark:text-white text-left font-bold hover:scale-105 transition-transform shadow-lg mt-4">
+              <div class="text-3xl mb-2">👩‍🌾</div>
+              <h4>Mrs. Kamala Silva</h4>
+              <p class="text-sm opacity-80">Chili Expert • 28 Years</p>
+            </button>
+
+            <button onclick="selectFarmer(3)" class="farmer-btn w-full p-6 rounded-2xl bg-white dark:bg-gray-800 text-heilla-black dark:text-white text-left font-bold hover:scale-105 transition-transform shadow-lg mt-4">
+              <div class="text-3xl mb-2">🧑‍🌾</div>
+              <h4>Mr. Aravinda Jayasena</h4>
+              <p class="text-sm opacity-80">Pepper Pioneer • 42 Years</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- Farmer Details -->
+        <div id="farmer-detail" class="space-y-6">
+          <div>
+            <h3 class="text-4xl font-black mb-4">Mr. Ransaka Perera</h3>
+            <p class="text-heilla-yellow font-bold text-lg mb-2">📍 Matara District</p>
+            <p class="text-heilla-yellow font-bold text-lg">🌾 35 years of farming</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-heilla-terracotta to-orange-700 text-white p-8 rounded-2xl">
+            <p class="text-lg leading-relaxed">
+              Three generations of spice farming excellence. Ransaka uses traditional growing methods passed down from his grandfather, maintaining the highest standards of quality and sustainability.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-green-50 dark:bg-green-900 p-6 rounded-2xl text-center">
+              <div class="text-4xl mb-2">🌱</div>
+              <p class="font-black text-heilla-black dark:text-white">Organic Methods</p>
+            </div>
+            <div class="bg-blue-50 dark:bg-blue-900 p-6 rounded-2xl text-center">
+              <div class="text-4xl mb-2">🤝</div>
+              <p class="font-black text-heilla-black dark:text-white">Fair Trade</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sustainability Section -->
+  <section class="py-20 px-6 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-heilla-yellow font-bold uppercase tracking-widest text-sm mb-3">OUR COMMITMENT</p>
+        <h2 class="text-5xl lg:text-6xl font-black">Sustainability First</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="group hover-scale rounded-3xl bg-gradient-to-br from-green-500 to-green-700 text-white p-10 shadow-lg">
+          <div class="text-6xl mb-6">♻️</div>
+          <h3 class="text-3xl font-black mb-4">Eco-Packaging</h3>
+          <p class="text-lg leading-relaxed mb-4">
+            100% compostable, biodegradable packaging with zero plastic waste.
+          </p>
+          <p class="text-sm opacity-90">✓ W3C Web Sustainability Guidelines 2.0</p>
+        </div>
+
+        <div class="group hover-scale rounded-3xl bg-gradient-to-br from-blue-500 to-blue-700 text-white p-10 shadow-lg">
+          <div class="text-6xl mb-6">💧</div>
+          <h3 class="text-3xl font-black mb-4">Water Conservation</h3>
+          <p class="text-lg leading-relaxed mb-4">
+            Rainwater harvesting reduces water waste by 60% across all farms.
+          </p>
+          <p class="text-sm opacity-90">✓ Protecting Sri Lanka's resources</p>
+        </div>
+
+        <div class="group hover-scale rounded-3xl bg-gradient-to-br from-orange-500 to-red-700 text-white p-10 shadow-lg">
+          <div class="text-6xl mb-6">🌍</div>
+          <h3 class="text-3xl font-black mb-4">Carbon Neutral</h3>
+          <p class="text-lg leading-relaxed mb-4">
+            Local farming + local delivery = minimal carbon footprint.
+          </p>
+          <p class="text-sm opacity-90">✓ 1 tree planted per purchase</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Traceability Feature -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto gradient-heilla rounded-3xl p-12 text-heilla-black shadow-2xl">
+      <h2 class="text-4xl font-black mb-8 text-center">Know Your Spice's Journey</h2>
+      <p class="text-lg text-center mb-12 opacity-95">
+        Every Heilla packet includes a <strong>Traceability Code</strong>. Scan it to:
+      </p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="text-5xl font-black mb-3 text-heilla-red">01</div>
+          <p class="font-bold">Meet the Farmer</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-black mb-3 text-heilla-red">02</div>
+          <p class="font-bold">Verify Quality</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-black mb-3 text-heilla-red">03</div>
+          <p class="font-bold">Get Recipes</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-black mb-3 text-heilla-red">04</div>
+          <p class="font-bold">Track Impact</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Section -->
+  <section class="py-20 px-6 bg-yellow-50 dark:bg-gray-900">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-5xl font-black mb-6">Join the Heilla Community</h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 mb-10">
+        Share your cooking stories, connect with spice lovers, and celebrate our farmers.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button class="px-8 py-4 bg-heilla-red text-white font-black rounded-full hover:scale-105 transition-transform text-lg">
+          Join Newsletter
+        </button>
+        <button class="px-8 py-4 border-2 border-heilla-yellow text-heilla-yellow hover:bg-heilla-yellow hover:text-black transition-all font-black rounded-full text-lg">
+          Follow Social
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="gradient-dark text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <h3 class="text-2xl font-black mb-4 text-heilla-yellow">Heilla Spices</h3>
+          <p class="text-gray-300">Premium Sri Lankan spices for discerning palates worldwide.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-heilla-yellow">Shop</h4>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="marketplace.html" class="hover:text-heilla-yellow transition">Turmeric</a></li>
+            <li><a href="marketplace.html" class="hover:text-heilla-yellow transition">Chili</a></li>
+            <li><a href="marketplace.html" class="hover:text-heilla-yellow transition">Pepper</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-heilla-yellow">Company</h4>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="#" class="hover:text-heilla-yellow transition">About</a></li>
+            <li><a href="#" class="hover:text-heilla-yellow transition">Sustainability</a></li>
+            <li><a href="#" class="hover:text-heilla-yellow transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-heilla-yellow">Follow</h4>
+          <div class="flex gap-4 text-2xl">
+            <a href="#" class="hover:scale-110 transition">📦</a>
+            <a href="#" class="hover:scale-110 transition">📱</a>
+            <a href="#" class="hover:scale-110 transition">🎬</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+        <p>&copy; 2026 Heilla Spices. Crafted with ❤️ for spice lovers.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dark Mode
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const toggleIcon = document.getElementById('toggleIcon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      html.classList.add('dark-mode');
+      toggleIcon.textContent = '☀️';
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark-mode');
+      const isDark = html.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+      toggleIcon.textContent = isDark ? '☀️' : '🌙';
+    });
+
+    // Farmers Data
+    const farmers = [
+      {
+        name: 'Mr. Ransaka Perera',
+        region: 'Matara District',
+        years: 35,
+        story: 'Three generations of spice farming excellence. Ransaka uses traditional growing methods passed down from his grandfather, maintaining the highest standards of quality and sustainability.',
+        emoji: '👨‍🌾',
+      },
+      {
+        name: 'Mrs. Kamala Silva',
+        region: 'Galle Division',
+        years: 28,
+        story: 'Known for her "Miris Pradeep" (Secret Chili). Each batch is carefully monitored for optimal heat and flavor profile through traditional methods.',
+        emoji: '👩‍🌾',
+      },
+      {
+        name: 'Mr. Aravinda Jayasena',
+        region: 'Sumangala Valley',
+        years: 42,
+        story: 'Organic farming pioneer. Aravinda was among the first to abandon chemical pesticides for sustainable practices over 40 years ago.',
+        emoji: '🧑‍🌾',
+      },
+    ];
+
+    function selectFarmer(id) {
+      const farmer = farmers[id - 1];
+      
+      // Update button styles
+      document.querySelectorAll('.farmer-btn').forEach((btn, idx) => {
+        if (idx === id - 1) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+          btn.classList.remove('bg-heilla-yellow');
+          btn.classList.add('bg-white', 'dark:bg-gray-800', 'text-heilla-black', 'dark:text-white');
+        }
+      });
+
+      // Update detail section
+      const detail = document.getElementById('farmer-detail');
+      detail.innerHTML = `
+        <div>
+          <h3 class="text-4xl font-black mb-4">${farmer.name}</h3>
+          <p class="text-heilla-yellow font-bold text-lg mb-2">📍 ${farmer.region}</p>
+          <p class="text-heilla-yellow font-bold text-lg">🌾 ${farmer.years} years of farming</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-heilla-terracotta to-orange-700 text-white p-8 rounded-2xl">
+          <p class="text-lg leading-relaxed">
+            ${farmer.story}
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-green-50 dark:bg-green-900 p-6 rounded-2xl text-center">
+            <div class="text-4xl mb-2">🌱</div>
+            <p class="font-black text-heilla-black dark:text-white">Organic Methods</p>
+          </div>
+          <div class="bg-blue-50 dark:bg-blue-900 p-6 rounded-2xl text-center">
+            <div class="text-4xl mb-2">🤝</div>
+            <p class="font-black text-heilla-black dark:text-white">Fair Trade</p>
+          </div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

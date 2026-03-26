@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heilla Marketplace - Premium Spices Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            heilla: {
+              yellow: '#F4C430',
+              red: '#B22222',
+              black: '#1A1A1A',
+              terracotta: '#A0522D',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .dark-mode .glass-effect {
+      background: rgba(26, 26, 26, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hover-scale {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-scale:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(242, 196, 48, 0.3);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #F4C430 0%, #B22222 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-heilla {
+      background: linear-gradient(135deg, #F4C430 0%, #B22222 100%);
+    }
+
+    .gradient-dark {
+      background: linear-gradient(135deg, #1A1A1A 0%, #2d2d2d 100%);
+    }
+  </style>
+</head>
+<body class="bg-white dark:bg-heilla-black dark:text-white transition-colors duration-300">
+
+  <!-- Dark Mode Toggle -->
+  <button id="darkModeToggle" class="fixed top-6 right-6 z-50 w-14 h-14 bg-heilla-yellow dark:bg-heilla-red rounded-full flex items-center justify-center text-2xl hover:scale-110 transition-transform duration-300 shadow-2xl">
+    <span id="toggleIcon">🌙</span>
+  </button>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-40 glass-effect dark:glass-effect border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-3xl font-black text-gradient">🌶️ Heilla</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="font-semibold hover:text-heilla-yellow transition">Home</a>
+        <a href="marketplace.html" class="font-semibold hover:text-heilla-yellow transition">Shop</a>
+        <a href="heritage.html" class="font-semibold hover:text-heilla-yellow transition">Heritage</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="gradient-heilla pt-32 pb-20 px-6 text-heilla-black">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-5xl lg:text-6xl font-black mb-4">The Heilla Marketplace</h1>
+      <p class="text-xl opacity-95 mb-4 max-w-2xl">
+        Handpicked premium spices for discerning palates. Each product tells a story of tradition and quality.
+      </p>
+      <p class="text-lg font-bold">
+        🛒 Cart Items: <span id="cart-count" class="text-heilla-red">0</span>
+      </p>
+    </div>
+  </section>
+  <!-- Products Section -->
+  <section class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-5xl font-black mb-16">Our Premium Collection</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Product 1: Turmeric (Large) -->
+        <div class="lg:col-span-2 group hover-scale rounded-3xl overflow-hidden shadow-2xl">
+          <div class="gradient-heilla p-10 text-heilla-black">
+            <div class="text-7xl mb-4">🌾</div>
+            <h3 class="text-4xl font-black mb-2">Golden Turmeric</h3>
+            <p class="text-lg opacity-90 mb-6">Pure Matara ground turmeric with high curcumin content</p>
+            
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-3 py-1 bg-white text-heilla-red font-bold rounded-full text-sm">High Curcumin</span>
+              <span class="px-3 py-1 bg-white text-heilla-red font-bold rounded-full text-sm">Anti-inflammatory</span>
+              <span class="px-3 py-1 bg-white text-heilla-red font-bold rounded-full text-sm">Energy Boost</span>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="text-sm opacity-80">Price</p>
+                <p class="text-3xl font-black">Rs. 450</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm opacity-80 mb-1">Rating</p>
+                <p class="text-2xl">★★★★★ <span class="text-lg">4.9</span></p>
+              </div>
+              <button onclick="addToCart('Golden Turmeric', 450); updateCartCount();" class="px-6 py-3 bg-white text-heilla-red font-bold rounded-full hover:scale-110 transition-transform">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2: Chili -->
+        <div class="group hover-scale rounded-3xl overflow-hidden shadow-2xl">
+          <div class="bg-gradient-to-br from-heilla-red to-red-700 p-8 text-white h-full flex flex-col justify-between">
+            <div>
+              <div class="text-6xl mb-4">🌶️</div>
+              <h3 class="text-2xl font-black mb-2">Extra Hot Chili</h3>
+              <p class="text-sm opacity-90 mb-4">Fiery ground chili powder from premium peppers</p>
+              
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-2 py-1 bg-white bg-opacity-20 text-white font-bold rounded-full text-xs">Bold Flavor</span>
+                <span class="px-2 py-1 bg-white bg-opacity-20 text-white font-bold rounded-full text-xs">Max Heat</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="text-2xl font-black mb-3">Rs. 380</p>
+              <button onclick="addToCart('Extra Hot Chili', 380); updateCartCount();" class="w-full py-2 bg-white text-heilla-red font-bold rounded-full hover:scale-105 transition-transform">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3: Black Pepper -->
+        <div class="group hover-scale rounded-3xl overflow-hidden shadow-2xl">
+          <div class="bg-gradient-to-br from-heilla-terracotta to-orange-700 p-8 text-white h-full flex flex-col justify-between">
+            <div>
+              <div class="text-6xl mb-4">🫑</div>
+              <h3 class="text-2xl font-black mb-2">Black Pepper</h3>
+              <p class="text-sm opacity-90 mb-4">Premium ground black pepper with bold aroma</p>
+              
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-2 py-1 bg-white bg-opacity-20 text-white font-bold rounded-full text-xs">Aromatic</span>
+                <span class="px-2 py-1 bg-white bg-opacity-20 text-white font-bold rounded-full text-xs">Digestive</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="text-2xl font-black mb-3">Rs. 520</p>
+              <button onclick="addToCart('Black Pepper', 520); updateCartCount();" class="w-full py-2 bg-white text-heilla-terracotta font-bold rounded-full hover:scale-105 transition-transform">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4: Curry Blend (Large) -->
+        <div class="lg:col-span-2 group hover-scale rounded-3xl overflow-hidden shadow-2xl">
+          <div class="bg-gradient-to-br from-yellow-100 to-orange-100 dark:from-gray-800 dark:to-gray-700 p-10">
+            <div class="text-7xl mb-4">🍛</div>
+            <h3 class="text-4xl font-black text-heilla-black dark:text-white mb-2">Curry Blend</h3>
+            <p class="text-lg text-gray-700 dark:text-gray-300 opacity-90 mb-6">Traditional Sri Lankan curry mix - ready to use</p>
+            
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-3 py-1 bg-heilla-yellow text-heilla-black font-bold rounded-full text-sm">Authentic</span>
+              <span class="px-3 py-1 bg-heilla-yellow text-heilla-black font-bold rounded-full text-sm">Ready to Use</span>
+              <span class="px-3 py-1 bg-heilla-yellow text-heilla-black font-bold rounded-full text-sm">Comfort Food</span>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="text-sm text-gray-600 opacity-80">Price</p>
+                <p class="text-3xl font-black text-heilla-red">Rs. 650</p>
+              </div>
+              <button onclick="addToCart('Curry Blend', 650); updateCartCount();" class="px-6 py-3 bg-heilla-red text-white font-bold rounded-full hover:scale-110 transition-transform">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5: Healing Combo -->
+        <div class="group hover-scale rounded-3xl overflow-hidden shadow-2xl">
+          <div class="bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900 dark:to-purple-900 p-8">
+            <div class="text-6xl mb-4">💛</div>
+            <h3 class="text-2xl font-black text-heilla-black dark:text-white mb-2">Healing Combo</h3>
+            <p class="text-sm text-gray-700 dark:text-gray-300 opacity-90 mb-4">Turmeric + Ginger + Pepper wellness trio</p>
+            
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2 py-1 bg-heilla-yellow text-heilla-black font-bold rounded-full text-xs">Wellness</span>
+              <span class="px-2 py-1 bg-heilla-yellow text-heilla-black font-bold rounded-full text-xs">Golden Milk</span>
+            </div>
+
+            <div>
+              <p class="text-2xl font-black text-heilla-red mb-3">Rs. 1,200</p>
+              <button onclick="addToCart('Healing Combo', 1200); updateCartCount();" class="w-full py-2 bg-heilla-red text-white font-bold rounded-full hover:scale-105 transition-transform">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="gradient-dark text-white py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-5xl font-black mb-4">Get Exclusive Recipes</h2>
+      <p class="text-xl opacity-90 mb-8">Subscribe for authentic Sri Lankan spice recipes and cooking tips</p>
+      
+      <div class="flex gap-3 max-w-md mx-auto">
+        <input type="email" placeholder="Your email" class="flex-1 px-6 py-3 rounded-full text-heilla-black focus:outline-none">
+        <button class="px-8 py-3 bg-heilla-yellow text-heilla-black font-black rounded-full hover:scale-105 transition-transform">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="gradient-dark text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <h3 class="text-2xl font-black mb-4 text-heilla-yellow">Heilla Spices</h3>
+          <p class="text-gray-300">Premium Sri Lankan spices for discerning palates.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-heilla-yellow">Shop</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-300 hover:text-heilla-yellow transition">Turmeric</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-heilla-yellow transition">Chili</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-heilla-yellow transition">Pepper</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-heilla-yellow">Company</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-300 hover:text-heilla-yellow transition">About</a></li>
+            <li><a href="heritage.html" class="text-gray-300 hover:text-heilla-yellow transition">Sustainability</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-heilla-yellow transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-heilla-yellow">Follow</h4>
+          <div class="flex gap-4 text-2xl">
+            <a href="#" class="hover:scale-110 transition">📦</a>
+            <a href="#" class="hover:scale-110 transition">📱</a>
+            <a href="#" class="hover:scale-110 transition">🎬</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+        <p>&copy; 2026 Heilla Spices. Crafted with ❤️ for spice lovers.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dark Mode
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const toggleIcon = document.getElementById('toggleIcon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      html.classList.add('dark-mode');
+      toggleIcon.textContent = '☀️';
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark-mode');
+      const isDark = html.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+      toggleIcon.textContent = isDark ? '☀️' : '🌙';
+    });
+
+    // Shopping Cart
+    let cart = [];
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      alert(`✅ ${name} added to cart!`);
+    }
+
+    function updateCartCount() {
+      document.getElementById('cart-count').textContent = cart.length;
+    }
+  </script>
+</body>
+</html>

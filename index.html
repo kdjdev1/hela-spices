@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heilla Spices - Premium Sri Lankan Spices | Ethical & Sustainable</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            heilla: {
+              yellow: '#F4C430',
+              red: '#B22222',
+              black: '#1A1A1A',
+              terracotta: '#A0522D',
+            }
+          },
+          animation: {
+            float: 'float 3s ease-in-out infinite',
+            pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            shimmer: 'shimmer 2s infinite',
+            slideIn: 'slideIn 0.5s ease-out',
+            fadeInUp: 'fadeInUp 0.6s ease-out',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' }
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-1000px 0' },
+              '100%': { backgroundPosition: '1000px 0' }
+            },
+            slideIn: {
+              'from': { opacity: '0', transform: 'translateX(-20px)' },
+              'to': { opacity: '1', transform: 'translateX(0)' }
+            },
+            fadeInUp: {
+              'from': { opacity: '0', transform: 'translateY(30px)' },
+              'to': { opacity: '1', transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+
+    .scroll-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gradient-heilla {
+      background: linear-gradient(135deg, #F4C430 0%, #B22222 100%);
+    }
+
+    .gradient-dark {
+      background: linear-gradient(135deg, #1A1A1A 0%, #2d2d2d 100%);
+    }
+
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .dark-mode .glass-effect {
+      background: rgba(26, 26, 26, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hover-scale {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-scale:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(242, 196, 48, 0.3);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #F4C430 0%, #B22222 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .dark-mode .text-gradient {
+      background: linear-gradient(135deg, #F4C430 0%, #FDB813 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .accent-underline {
+      position: relative;
+      display: inline-block;
+    }
+
+    .accent-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #F4C430 0%, #B22222 100%);
+    }
+  </style>
+</head>
+<body class="bg-white dark:bg-heilla-black dark:text-white transition-colors duration-300">
+
+  <!-- Dark Mode Toggle -->
+  <button id="darkModeToggle" class="fixed top-6 right-6 z-50 w-14 h-14 bg-heilla-yellow dark:bg-heilla-red rounded-full flex items-center justify-center text-2xl hover:scale-110 transition-transform duration-300 shadow-2xl hover:shadow-2xl" title="Toggle dark mode">
+    <span id="toggleIcon">🌙</span>
+  </button>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-40 glass-effect dark:glass-effect border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-3xl font-black text-gradient hover:opacity-80 transition-opacity">
+        🌶️ Heilla
+      </a>
+      
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="font-semibold hover:text-heilla-yellow transition-colors">Home</a>
+        <a href="marketplace.html" class="font-semibold hover:text-heilla-yellow transition-colors">Shop</a>
+        <a href="heritage.html" class="font-semibold hover:text-heilla-yellow transition-colors">Heritage</a>
+        <div class="h-8 w-px bg-gray-300 dark:bg-gray-700"></div>
+        <button class="px-6 py-2 bg-heilla-red text-white font-bold rounded-full hover:bg-heilla-yellow hover:text-black transition-all hover:scale-105">
+          Order Now
+        </button>
+      </div>
+
+      <div class="md:hidden">
+        <button class="text-2xl">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-6 relative overflow-hidden">
+    <!-- Background Gradient Blobs -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-heilla-yellow rounded-full opacity-10 blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-heilla-red rounded-full opacity-10 blur-3xl"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Left Content -->
+      <div class="space-y-8">
+        <div class="inline-block">
+          <span class="px-6 py-2 bg-heilla-yellow text-heilla-black font-bold rounded-full text-sm uppercase tracking-widest">
+            🌾 Sri Lankan Heritage
+          </span>
+        </div>
+
+        <h1 class="text-6xl lg:text-7xl font-black leading-tight">
+          <span class="text-gradient">Experience</span>
+          <br>
+          <span>the Soul of</span>
+          <br>
+          <span class="text-gradient">Spice</span>
+        </h1>
+
+        <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-lg">
+          Discover premium Sri Lankan ground spices sourced directly from local farmers. Each packet carries generations of tradition, sustainable practices, and uncompromising quality you can taste.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <a href="marketplace.html" class="px-8 py-4 bg-heilla-red text-white font-bold rounded-full hover:bg-heilla-yellow hover:text-black transition-all duration-300 hover:scale-105 hover:shadow-2xl text-center">
+            Explore Collection
+          </a>
+          <button class="px-8 py-4 border-2 border-heilla-yellow text-heilla-yellow hover:bg-heilla-yellow hover:text-black transition-all duration-300 rounded-full font-bold">
+            Learn Story
+          </button>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-4 pt-12">
+          <div class="group">
+            <div class="text-4xl font-black text-heilla-red group-hover:text-heilla-yellow transition-colors">100%</div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 font-semibold">Organic Farms</p>
+          </div>
+          <div class="group">
+            <div class="text-4xl font-black text-heilla-red group-hover:text-heilla-yellow transition-colors">50+</div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 font-semibold">Years Heritage</p>
+          </div>
+          <div class="group">
+            <div class="text-4xl font-black text-heilla-red group-hover:text-heilla-yellow transition-colors">10K+</div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 font-semibold">Happy Customers</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Content - Premium Cards -->
+      <div class="grid grid-cols-2 gap-4 h-full">
+        <!-- Large Card -->
+        <div class="col-span-2 group hover-scale rounded-3xl overflow-hidden shadow-2xl">
+          <div class="gradient-heilla p-8 text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 text-9xl opacity-10">🌾</div>
+            <div class="relative z-10">
+              <div class="text-7xl mb-4">🌾</div>
+              <h3 class="text-3xl font-black mb-2">Golden Turmeric</h3>
+              <p class="text-lg opacity-95">High Curcumin, Pure Power</p>
+              <div class="mt-4 inline-block px-4 py-2 bg-white text-heilla-red font-bold rounded-full text-sm">★★★★★ 4.9</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Small Cards -->
+        <div class="group hover-scale rounded-2xl bg-gradient-to-br from-heilla-red to-red-700 p-6 text-white shadow-xl">
+          <div class="text-5xl mb-3">🌶️</div>
+          <h4 class="font-black text-xl mb-1">Chili Powder</h4>
+          <p class="text-sm opacity-90">Extra Hot Kick</p>
+        </div>
+
+        <div class="group hover-scale rounded-2xl bg-gradient-to-br from-heilla-terracotta to-orange-700 p-6 text-white shadow-xl">
+          <div class="text-5xl mb-3">🫑</div>
+          <h4 class="font-black text-xl mb-1">Black Pepper</h4>
+          <p class="text-sm opacity-90">Bold Aroma</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Features Section -->
+  <section class="py-20 px-6 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-heilla-yellow font-bold uppercase tracking-widest text-sm mb-3">OUR PROMISE</p>
+        <h2 class="text-5xl lg:text-6xl font-black mb-4">
+          From <span class="text-gradient">Garden</span> to <span class="text-gradient">Plate</span>
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Complete transparency in every step of our journey</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="group hover-scale rounded-2xl p-8 bg-white dark:bg-gray-800 shadow-lg">
+          <div class="w-16 h-16 bg-gradient-to-br from-heilla-yellow to-orange-400 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+            🌱
+          </div>
+          <h3 class="text-2xl font-black mb-3">Organic Farming</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Hand-selected by our farmers in Matara region using sustainable methods passed down through generations.
+          </p>
+          <div class="mt-6 flex items-center text-heilla-yellow font-bold gap-2">
+            Learn More <span>→</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="group hover-scale rounded-2xl p-8 bg-white dark:bg-gray-800 shadow-lg">
+          <div class="w-16 h-16 bg-gradient-to-br from-heilla-red to-red-700 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+            ⚙️
+          </div>
+          <h3 class="text-2xl font-black mb-3">Traditional Processing</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Stone mill grinding techniques preserve the essence and authentic flavor profiles of each spice.
+          </p>
+          <div class="mt-6 flex items-center text-heilla-yellow font-bold gap-2">
+            Learn More <span>→</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="group hover-scale rounded-2xl p-8 bg-white dark:bg-gray-800 shadow-lg">
+          <div class="w-16 h-16 bg-gradient-to-br from-heilla-terracotta to-orange-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+            🔬
+          </div>
+          <h3 class="text-2xl font-black mb-3">Quality Tested</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Laboratory verified for purity and potency. Every batch meets international quality standards.
+          </p>
+          <div class="mt-6 flex items-center text-heilla-yellow font-bold gap-2">
+            Learn More <span>→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6 relative">
+    <div class="max-w-4xl mx-auto gradient-heilla rounded-3xl p-12 text-white relative overflow-hidden shadow-2xl">
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-white rounded-full blur-3xl"></div>
+      </div>
+      
+      <div class="relative z-10 text-center">
+        <h2 class="text-5xl lg:text-6xl font-black mb-6">What Are You Cooking?</h2>
+        <p class="text-xl opacity-95 mb-8 max-w-xl mx-auto">
+          Let our AI assistant suggest the perfect spice blend for your dish
+        </p>
+        
+        <div class="flex gap-3 max-w-xl mx-auto">
+          <input 
+            type="text" 
+            placeholder="e.g., Fish curry, Biryani, Curry powder..."
+            class="flex-1 px-6 py-4 rounded-full text-heilla-black font-semibold focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-heilla-red"
+          />
+          <button class="px-8 py-4 bg-white text-heilla-red font-black rounded-full hover:scale-105 transition-transform">
+            Suggest →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Section -->
+  <section class="py-20 px-6 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-heilla-yellow font-bold uppercase tracking-widest text-sm mb-3">TRUSTED BY</p>
+        <h2 class="text-4xl font-black">Join 10,000+ Happy Customers</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div class="text-center p-8">
+          <div class="text-5xl font-black text-heilla-red mb-2">98%</div>
+          <p class="text-gray-600 dark:text-gray-400 font-semibold">Customer Satisfaction</p>
+        </div>
+        <div class="text-center p-8">
+          <div class="text-5xl font-black text-heilla-red mb-2">50+</div>
+          <p class="text-gray-600 dark:text-gray-400 font-semibold">Years of Heritage</p>
+        </div>
+        <div class="text-center p-8">
+          <div class="text-5xl font-black text-heilla-red mb-2">🌍</div>
+          <p class="text-gray-600 dark:text-gray-400 font-semibold">Worldwide Shipping</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="gradient-dark text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <h3 class="text-2xl font-black mb-4 text-heilla-yellow">Heilla Spices</h3>
+          <p class="text-gray-300">Premium Sri Lankan ground spices for discerning palates worldwide.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-heilla-yellow">Shop</h4>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="#" class="hover:text-heilla-yellow transition">Turmeric</a></li>
+            <li><a href="#" class="hover:text-heilla-yellow transition">Chili</a></li>
+            <li><a href="#" class="hover:text-heilla-yellow transition">Pepper</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-heilla-yellow">Company</h4>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="#" class="hover:text-heilla-yellow transition">About</a></li>
+            <li><a href="#" class="hover:text-heilla-yellow transition">Sustainability</a></li>
+            <li><a href="#" class="hover:text-heilla-yellow transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-heilla-yellow">Follow Us</h4>
+          <div class="flex gap-4 text-2xl">
+            <a href="#" class="hover:scale-110 transition">📦</a>
+            <a href="#" class="hover:scale-110 transition">📱</a>
+            <a href="#" class="hover:scale-110 transition">🎬</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+        <p>&copy; 2026 Heilla Spices. Crafted with ❤️ for spice lovers worldwide.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const toggleIcon = document.getElementById('toggleIcon');
+    const html = document.documentElement;
+
+    // Check saved preference
+    if (localStorage.getItem('darkMode') === 'true') {
+      html.classList.add('dark-mode');
+      toggleIcon.textContent = '☀️';
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark-mode');
+      const isDark = html.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+      toggleIcon.textContent = isDark ? '☀️' : '🌙';
+    });
+
+    // Scroll Reveal Animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
